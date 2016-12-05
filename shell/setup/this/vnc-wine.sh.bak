@@ -152,7 +152,7 @@ fi
 echo "------------------------soft-------------------"  
 sudo DEBIAN_FRONTEND=noninteractive apt-get install --install-recommends --force-yes -y firefox flashplugin-installer firefox-locale-zh-hant firefox-locale-zh-hans putty filezilla* dosbox putty visualboyadvance visualboyadvance-gtk libreoffice libreoffice-l10n-zh-cn pinta htop aptitude locate xchm fceux zsnes chromium-browser pepperflashplugin-nonfree
 echo "CHROMIUM_FLAGS='--user-data-dir'" >> /etc/chromium-browser/default
-sudo DEBIAN_FRONTEND=noninteractive apt-get install --install-recommends --force-yes -y lxtask lxsession-edit lxappearance lxappearance-obconf
+sudo DEBIAN_FRONTEND=noninteractive apt-get install --install-recommends --force-yes -y lxtask lxsession-edit lxappearance lxappearance-obconf uget
 echo "------------------------rarlinux--------------------" 
 cd /var/www/html/shell/conf/
 sudo mkdir -vp /var/www/html/shell/conf/rarlinux

@@ -31,8 +31,8 @@ sudo dpkg --configure -a
 sudo dpkg-reconfigure -p high -f noninteractive debconf 
 sudo apt-get install -f
 sudo apt-get update --force-yes  -y
-sudo apt-get upgrade --force-yes  -y 
-sudo apt-get dist-upgrade --force-yes  -y
+#sudo apt-get upgrade --force-yes  -y 
+#sudo apt-get dist-upgrade --force-yes  -y
 sudo apt-get autoremove -y  
 sudo apt-get clean -y  
 sudo apt-get autoclean -y 
@@ -132,8 +132,8 @@ sudo dpkg --configure -a
 sudo dpkg-reconfigure -p high -f noninteractive debconf 
 sudo apt-get install -f
 sudo apt-get update --force-yes  -y
-sudo apt-get upgrade --force-yes  -y 
-sudo apt-get dist-upgrade --force-yes  -y 
+#sudo apt-get upgrade --force-yes  -y 
+#sudo apt-get dist-upgrade --force-yes  -y 
 sudo apt-get autoremove -y  
 sudo apt-get clean -y  
 sudo apt-get autoclean -y 
