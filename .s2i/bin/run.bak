@@ -3,6 +3,7 @@
 ls -l /
 id -un
 echo "run"
+uname -r
 export TZ='Asia/Shanghai'
 #if [ ${BUILDLEV} != "start" ] && [ ${BUILDLEV} != "dev" ] ; then
 #fi

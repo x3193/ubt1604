@@ -3,11 +3,11 @@
 echo "--------------------VNC------------------------" 
 
 bash
-cron &
-/etc/init.d/cron restart
+sudo cron &
+sudo /etc/init.d/cron restart
 
-rm -rf -R /tmp/*
-chmod -R 7777 /var/www/html
+sudo rm -rf -R /tmp/*
+sudo chmod -R 7777 /var/www/html
 cd /root
 
 if [ $1 = "full" ]; then
