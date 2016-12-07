@@ -3,14 +3,15 @@
 echo "--------------------VNC------------------------" 
 
 bash
-sudo cron &
-sudo /etc/init.d/cron restart
+cron &
+/etc/init.d/cron restart
 
-sudo rm -rf -R /tmp/*
-sudo chmod -R 7777 /var/www/html
+rm -rf -R /tmp/*
+chmod -R 7777 /var/www/html
 cd /root
 
 if [ $1 = "full" ]; then
+
  sudo service apache2 restart ;
  sudo service ssh start ;
  sudo service mysql restart ;
@@ -24,6 +25,7 @@ if [ $1 = "full" ]; then
 fi
 
 if [ $1 = "vnc" ]; then
+
  #sudo service apache2 restart ;
  #sudo service ssh start ;
  #sudo service mysql restart ;
