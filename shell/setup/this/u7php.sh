@@ -120,13 +120,12 @@ cd /var/www/html/shell/conf/vncserver
 sudo cp -f novnc.pem /root
 chmod -R 7777 /var/www/html
 #sed -i "s/<\/proxy>.*/<\/proxy>\r\nProxyPass \/novnc http\:\/\/localhost\:6080\/  \r\nProxyPassReverse \/novnc http\:\/\/localhost\:6080\/\r\n/g" /etc/apache2/sites-available/000-default.conf;
-sudo mkdir -vp /home/www-data
-sudo chmod -R 7777 /home/www-data
-cd /root
-sudo cp -R -f ./.vnc /home/www-data
-sudo chmod -R 0600 /home/www-data/.vnc/passwd 
-echo "www-data:$ROOT_PASS" | chpasswd
-sed -i "s/www-data:x:.*/www-data:x:33:0:www-data:\/home\/www-data:\/bin\/bash/g" /etc/passwd
+sudo mkdir -vp /home/www-data;
+sudo chmod -R 7777 /home/www-data;
+sudo cp -R -f /root/.vnc /home/www-data/.vnc;
+sudo chmod -R 0600 /home/www-data/.vnc/passwd ;
+sudo echo "www-data:$ROOT_PASS" | chpasswd;
+sudo sed -i "s/www-data:x:.*/www-data:x:33:0:www-data:\/home\/www-data:\/bin\/bash/g" /etc/passwd;
 echo "--------------------php-shell-----------------------"  
 cd /var/www/html/shell/conf/php
 #sudo cp -R -f /etc/sudoers /etc/sudoers.backup
@@ -180,7 +179,7 @@ sudo apt-get install ajaxterm -y
 echo "setsid ajaxterm" >> /var/www/html/shell/loader/this/vnc.sh
 sudo sed -i "s/PasswordAuthentication.*/PasswordAuthentication yes/g" /etc/ssh/sshd_config;
 sudo service ssh start;
-sudo a2enmod proxy_http;
+a2enmod proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_http
 sed -i "s/Listen 80/Listen 80 \r\nListen 8022/g" /etc/apache2/ports.conf;
 sed -i "s/<\/VirtualHost>.*/<\/VirtualHost>\r\n\r\n<VirtualHost \*\:8022>\r\nProxyRequests Off\r\n<proxy *>\r\nOrder allow\,deny\r\nAllow from all\r\n<\/proxy>\r\nProxyPass \/ http\:\/\/localhost\:8022\/  \r\nProxyPassReverse \/ http\:\/\/localhost\:8022\/\r\n<\/VirtualHost>/g" /etc/apache2/sites-available/000-default.conf;
 #sed -i "s/ServerName www-x3193.myalauda.cn.*/ServerName localhost/g" /etc/apache2/sites-available/000-default.conf;
