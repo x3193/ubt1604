@@ -3,8 +3,8 @@
 echo "--------------------OPSV3------------------------"
 
 #data
-uid='1001' 
-username='x3193'
+uid=$2
+username=$4
 #等号两边均不能有空格存在 
 echo "====="
 #1001
@@ -22,6 +22,12 @@ usermod -a -G sudo ${username}
 usermod -a -G adm ${username}
 PASS=${ROOT_PASS:-$(pwgen -s 12 1)}
 echo "${username}:$PASS" | chpasswd
+sudo mkdir -vp /home/www-data;
+sudo chmod -R 7777 /home/www-data;
+sudo cp -R -f /root/.vnc /home/www-data/.vnc;
+sudo chmod -R 0600 /home/www-data/.vnc/passwd ;
+sudo echo "www-data:$ROOT_PASS" | chpasswd;
+sudo sed -i "s/www-data:x:.*/www-data:x:33:0:www-data:\/home\/www-data:\/bin\/bash/g" /etc/passwd;
 #ssh
 echo "${uid} ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
 chown -R ${uid}:root /etc/ssh/
